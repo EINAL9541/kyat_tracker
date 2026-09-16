@@ -9,15 +9,15 @@ class LoadingDotsRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: List.generate(3, (index) => LoadingDot(index: index)),
+      children: List.generate(3, (index) => _LoadingDot(index: index)),
     );
   }
 }
 
-class LoadingDot extends HookWidget {
+class _LoadingDot extends HookWidget {
   final int index;
 
-  const LoadingDot({required this.index, super.key});
+  const _LoadingDot({required this.index});
 
   @override
   Widget build(BuildContext context) {

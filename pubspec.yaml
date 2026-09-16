@@ -37,7 +37,9 @@ dependencies:
   go_router: ^17.5.0
   flutter_riverpod: ^3.4.2
   flutter_hooks: ^0.21.3+1
+  flutter_svg: ^2.3.0
   hooks_riverpod: ^3.4.2
+
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +71,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/icon/
+    - assets/images/logo/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../core/i18n/app_translations.dart';
-import '../../../../core/theme/app_colors.dart';
+import '../../../core/i18n/app_translations.dart';
+import '../../../core/theme/app_colors.dart';
 import 'wd_keypad_button.dart';
 import 'wd_pin_dots.dart';
 

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../core/i18n/app_translations.dart';
-import '_widget/wd_onboarding_background.dart';
+import 'package:kyat_tracker/core/ui/widgets/wd_app_background.dart';
+import '../../core/i18n/app_translations.dart';
 import '_widget/wd_onboarding_carousel.dart';
 import '_widget/wd_onboarding_cta_button.dart';
 import '_widget/wd_onboarding_indicators.dart';
@@ -56,7 +56,7 @@ class OnboardingScreen extends HookConsumerWidget {
 
     final isLastSlide = currentPage.value == slides.length - 1;
 
-    return OnboardingBackgroundWidget(
+    return AppBackgroundWidget(
       child: Column(
         children: [
           OnboardingTopBarWidget(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../../core/i18n/app_translations.dart';
-import '../../../core/theme/app_colors.dart';
+import '../../core/i18n/app_translations.dart';
+import '../../core/theme/app_colors.dart';
 
 class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../core/theme/app_colors.dart';
+import 'package:flutter_svg/svg.dart';
+
+import '../../../core/theme/app_colors.dart';
 
 class LoginHeaderWidget extends StatelessWidget {
   final AnimationController logoController;
@@ -42,16 +44,21 @@ class LoginHeaderWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              child: const Center(
-                child: Icon(
-                  Icons.account_balance_wallet_rounded,
-                  size: 40,
-                  color: AppColors.iconBlue,
+              child: Center(
+                child: SvgPicture.asset(
+                  'assets/images/logo/app_icon_transparent.svg',
+                  fit: BoxFit.contain,
+                  colorFilter: const ColorFilter.mode(
+                    AppColors.accentBlue,
+                    BlendMode.srcIn,
+                  ),
+                  semanticsLabel: 'Kyat Tracker logo',
                 ),
               ),
             ),
           ),
         ),
+
         const SizedBox(height: 28),
 
         Text(
@@ -68,10 +75,7 @@ class LoginHeaderWidget extends StatelessWidget {
         Text(
           subtitle,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 14,
-            color: AppColors.textLight,
-          ),
+          style: const TextStyle(fontSize: 14, color: AppColors.textLight),
         ),
       ],
     );

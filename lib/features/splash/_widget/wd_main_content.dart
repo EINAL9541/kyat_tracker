@@ -2,9 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/theme/app_colors.dart';
+import '../../../core/theme/app_colors.dart';
 import 'wd_loading_dots.dart';
 
 class SplashMainContent extends HookWidget {
@@ -64,17 +65,6 @@ class SplashMainContent extends HookWidget {
       ),
     );
 
-    final badgeScale = useAnimation(
-      Tween<double>(begin: 0.85, end: 1.0).animate(
-        CurvedAnimation(parent: badgeController, curve: Curves.easeOutBack),
-      ),
-    );
-    final badgeOpacity = useAnimation(
-      Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(parent: badgeController, curve: Curves.easeOut),
-      ),
-    );
-
     final dotsOpacity = useAnimation(
       Tween<double>(
         begin: 0.0,
@@ -105,9 +95,7 @@ class SplashMainContent extends HookWidget {
 
       final navTimer = Timer(const Duration(milliseconds: 3200), () {
         if (context.mounted) {
-          try {
-            context.go('/onboarding');
-          } catch (_) {}
+          context.go('/onboarding');
         }
       });
 
@@ -137,7 +125,7 @@ class SplashMainContent extends HookWidget {
                       width: 112,
                       height: 112,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: AppColors.primaryWhite,
                         borderRadius: BorderRadius.circular(28),
                         boxShadow: [
                           BoxShadow(
@@ -148,8 +136,14 @@ class SplashMainContent extends HookWidget {
                         ],
                       ),
                       child: Center(
-                        child: Image.asset(
-                          'assets/images/icon/app_logo.png',
+                        child: SvgPicture.asset(
+                          'assets/images/logo/app_icon_transparent.svg',
+                          fit: BoxFit.contain,
+                          colorFilter: const ColorFilter.mode(
+                            AppColors.accentBlue,
+                            BlendMode.srcIn,
+                          ),
+                          semanticsLabel: 'Kyat Tracker logo',
                         ),
                       ),
                     ),
@@ -184,36 +178,6 @@ class SplashMainContent extends HookWidget {
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
                       color: AppColors.textLight,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 24),
-
-                Transform.scale(
-                  scale: badgeScale,
-                  child: Opacity(
-                    opacity: badgeOpacity.clamp(0.0, 1.0),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 14,
-                        vertical: 6,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.12),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: Colors.white.withValues(alpha: 0.18),
-                        ),
-                      ),
-                      child: const Text(
-                        'PERSONAL FINANCE',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 1.5,
-                        ),
-                      ),
                     ),
                   ),
                 ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import '../../../../core/i18n/app_translations.dart';
-import '../../../../core/theme/app_colors.dart';
+import 'package:kyat_tracker/core/utils/utils_ring.dart';
+
+import '../../../core/i18n/app_translations.dart';
+import '../../../core/theme/app_colors.dart';
 
 class BiometricViewWidget extends HookWidget {
   final AnimationController controller;
@@ -41,22 +43,20 @@ class BiometricViewWidget extends HookWidget {
                       return Stack(
                         alignment: Alignment.center,
                         children: List.generate(2, (index) {
-                          double progress = controller.value + (index * 0.5);
-                          if (progress > 1.0) progress -= 1.0;
-
-                          final curved = Curves.easeOut.transform(progress);
-                          final double size =
-                              80.0 + (curved * ((index + 1) * 36.0 + 36.0));
-                          final double opacity =
-                              (0.4 * (1.0 - curved)).clamp(0.0, 0.4);
+                          final ring = RingUtils.biometricRingState(
+                            controller.value,
+                            index,
+                          );
 
                           return Container(
-                            width: size,
-                            height: size,
+                            width: ring.size,
+                            height: ring.size,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: Colors.white.withValues(alpha: opacity),
+                                color: Colors.white.withValues(
+                                  alpha: ring.opacity,
+                                ),
                                 width: 1.5,
                               ),
                             ),
